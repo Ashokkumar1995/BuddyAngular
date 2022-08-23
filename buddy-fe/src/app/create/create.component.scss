@@ -1,0 +1,50 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  // max-width: 800px;
+  margin-top: 100px;
+}
+:host {
+  display: flex;
+  align-items: center;
+  // justify-content: center;
+  margin: 0 50px;
+  flex: 1 1 0px;
+}
+
+.actions {
+  display: flex;
+  flex: 1 1 0px;
+  align-items: center;
+  justify-content: space-between;
+  .edit {
+    width: 30px;
+    height: 30px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.students {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  margin-left: 50px;
+  width: 400px;
+  .list {
+    display: flex;
+    flex: 1 1 0px;
+    justify-content: space-between;
+  }
+}
+
+.viewContainer {
+  display: flex;
+}
+.title {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
