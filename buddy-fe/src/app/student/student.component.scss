@@ -1,11 +1,11 @@
 .example-card {
   display: flex;
   flex-direction: column;
-  max-width: 400px;
+  max-width: 600px;
 }
 
 .example-header-image {
-  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-image: url("../../assets/icons/buddy.png");
   background-size: cover;
 }
 
@@ -16,4 +16,14 @@
   align-items: center;
   justify-content: center;
   padding: 50px;
+}
+.studentForm {
+  display: flex;
+  div {
+    margin: 20px;
+  }
+}
+.mat-card-actions .submitBtn {
+  background-color: #138a72;
+  color: white;
 }

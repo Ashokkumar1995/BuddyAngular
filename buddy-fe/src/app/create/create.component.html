@@ -1,5 +1,9 @@
-<mat-card class="card">
-    <!-- <mat-card-title>Shiba Inu</mat-card-title>
+<div class="adminActions">
+    <button mat-button (click)="logOut()">Logout</button>
+</div>
+<div class="adminPanel">
+    <mat-card class="card">
+        <!-- <mat-card-title>Shiba Inu</mat-card-title>
     <mat-card-subtitle>Dog Breed</mat-card-subtitle>
     <mat-card-content>
         <p>This card indeterminates progress bar.</p>
@@ -8,73 +12,75 @@
         <button mat-button>LIKE</button>
         <button mat-button>SHARE</button>
     </mat-card-actions> -->
-    <h1 class="title">Module Details</h1>
-    <mat-tab-group>
-        <mat-tab label="Create">
+        <h1 class="title">Module Details</h1>
+        <mat-tab-group>
+            <mat-tab class="createTab" label="Create">
 
-            <form [formGroup]="createForm">
-                <div>
-                    <label>
-                        Module Id:
-                        <input formControlName="id" placeholder="Enter the Id">
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Count:
-                        <input formControlName="count" type="number" placeholder="Enter the group count">
-                    </label>
-                </div>
-                <button type="submit" (click)="onSubmit(createForm)" [disabled]="createForm.invalid">Submit</button>
-            </form>
+                <form class="createForm" [formGroup]="createForm">
+                    <div>
+                        <label>
+                            Module Id:
+                            <input formControlName="id" placeholder="Enter the Id">
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Count:
+                            <input formControlName="count" type="number" placeholder="Enter the group count">
+                        </label>
+                    </div>
 
-
-
-        </mat-tab>
-
-        <mat-tab label="View">
-            <mat-table [dataSource]="dataSource">
-
-                <ng-container matColumnDef="id">
-                    <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="count">
-                    <mat-header-cell *matHeaderCellDef> Count </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.count}} </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="actions">
-                    <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
-                    <mat-cell *matCellDef="let row">
-                        <div class="actions">
-                            <img class="edit" src="../../assets/icons/preview.svg" (click)="preview(row.id)">
-                            <img class="edit" src="../../assets/icons/match.svg" (click)="match(row.id)">
-                            <img class="edit" src="../../assets/icons/delete.svg">
-                        </div>
-                    </mat-cell>
-                </ng-container>
-
-                <mat-header-row *matHeaderRowDef="['id', 'count', 'actions']"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: ['id', 'count', 'actions']"></mat-row>
-            </mat-table>
-        </mat-tab>
-    </mat-tab-group>
+                </form>
+                <button class="submitBtn" mat-button type="submit" (click)="onSubmit(createForm)"
+                    [disabled]="createForm.invalid">Submit</button>
 
 
+            </mat-tab>
 
-</mat-card>
+            <mat-tab label="View">
+                <mat-table [dataSource]="dataSource">
 
-<ng-container *ngIf="students.length">
-    <mat-card class="students">
-        <h1 class="title">Student Details</h1>
-        <div>
-            <h2 class="title">{{students[0].moduleId}}</h2>
-            <ul class="list" *ngFor="let s of students">
-                <label>{{s.id}}</label>
-                <label>{{s.groupId}}</label>
-            </ul>
-        </div>
+                    <ng-container matColumnDef="id">
+                        <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="count">
+                        <mat-header-cell *matHeaderCellDef> Count </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.count}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="actions">
+                        <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+                        <mat-cell *matCellDef="let row">
+                            <div class="actions">
+                                <img class="edit" src="../../assets/icons/preview.svg" (click)="preview(row.id)">
+                                <img class="edit" src="../../assets/icons/match.svg" (click)="match(row.id)">
+                                <img class="edit" src="../../assets/icons/delete.svg">
+                            </div>
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="['id', 'count', 'actions']"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: ['id', 'count', 'actions']"></mat-row>
+                </mat-table>
+            </mat-tab>
+        </mat-tab-group>
+
+
+
     </mat-card>
-</ng-container>
+
+    <ng-container *ngIf="students.length">
+        <mat-card class="students">
+            <h1 class="title">Student Details</h1>
+            <div>
+                <h2 class="title">{{students[0].moduleId}}</h2>
+                <ul class="list" *ngFor="let s of students">
+                    <label>{{s.id}}</label>
+                    <label>{{s.groupId}}</label>
+                </ul>
+            </div>
+        </mat-card>
+    </ng-container>
+</div>

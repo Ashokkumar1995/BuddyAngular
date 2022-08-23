@@ -5,15 +5,40 @@
   align-items: center;
   justify-content: center;
   padding: 50px;
+
+  .submitBtn {
+    background-color: #138a72;
+    color: white;
+    &:disabled {
+      opacity: 0.4;
+    }
+  }
+  .adminForm {
+    display: flex;
+    flex-direction: column;
+    div {
+      margin: 20px;
+      label {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
 }
 
-.example-card {
+.card {
   display: flex;
   flex-direction: column;
-  max-width: 400px;
+  max-width: 600px;
 }
 
-.example-header-image {
-  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+.header-image {
+  background-image: url("../../assets/icons/buddy.png");
   background-size: cover;
+}
+
+.actionContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

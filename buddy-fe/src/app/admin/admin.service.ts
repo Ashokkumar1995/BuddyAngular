@@ -28,8 +28,10 @@ export class AdminService {
 
           if (data && data.resp) {
             this.isLoggedIn = data.resp;
+            sessionStorage.setItem('logIn', 'true');
           } else {
             this.isLoggedIn = false;
+            sessionStorage.setItem('logIn', 'false');
           }
           return data;
         })
@@ -42,6 +44,11 @@ export class AdminService {
     //     this.isLoggedIn = false;
     //   }
     // });
+  }
+
+  logOff() {
+    this.isLoggedIn = false;
+    sessionStorage.setItem('logIn', 'false');
   }
 
   isAuthenticated(): boolean {

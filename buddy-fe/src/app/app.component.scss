@@ -1,0 +1,20 @@
+.toolbar {
+  display: flex;
+  flex: 1 1 0px;
+  align-items: center;
+  background-color: #138a72;
+  .title {
+    margin: 0 30px;
+  }
+  .rts {
+    display: flex;
+    flex: 1 1 0px;
+    justify-content: flex-end;
+    button {
+      width: 100px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

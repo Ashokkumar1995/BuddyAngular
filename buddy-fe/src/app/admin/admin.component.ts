@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AdminService } from './admin.service';
 
@@ -14,7 +15,8 @@ export class AdminComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: AdminService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -33,9 +35,12 @@ export class AdminComponent implements OnInit {
     //   console.log(data);
     // });
     this.service.login(form.value.id, form.value.pwd).subscribe((data) => {
-      console.log(data);
+      // console.log(data);
       if (data.resp == 'true') {
         this.router.navigate(['/create']);
+      } else {
+        this._snackBar.open('Incorrect Password', 'Ok');
+        this.myForm.reset();
       }
     });
   }

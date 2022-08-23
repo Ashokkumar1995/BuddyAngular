@@ -1,15 +1,28 @@
 .card {
   display: flex;
   flex-direction: column;
-  // max-width: 800px;
+  min-width: 600px;
   margin-top: 100px;
 }
 :host {
   display: flex;
-  align-items: center;
+  // align-items: center;
   // justify-content: center;
   margin: 0 50px;
-  flex: 1 1 0px;
+  flex-direction: column;
+  // flex: 1 1 0px;
+  .adminActions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 50px;
+    button {
+      background-color: #138a72;
+      color: white;
+    }
+  }
+  .adminPanel {
+    display: flex;
+  }
 }
 
 .actions {
@@ -47,4 +60,15 @@
   align-items: center;
   justify-content: center;
   display: flex;
+}
+
+.createForm {
+  display: flex;
+  div {
+    margin: 20px;
+  }
+}
+.submitBtn {
+  background-color: #138a72;
+  color: white !important;
 }

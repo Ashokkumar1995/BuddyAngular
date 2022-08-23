@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ModuleCreate } from '../admin/admin.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { StudentService } from '../student/student.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -20,10 +21,17 @@ export class CreateComponent implements OnInit {
     private fb: FormBuilder,
     private service: AdminService,
     private studentService: StudentService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
+    if (sessionStorage.getItem('logIn') == 'true') {
+      console.log('Login Success');
+    } else {
+      this.router.navigate(['/admin']);
+    }
+
     this.createForm = this.fb.group({
       id: ['', [Validators.required]],
       count: ['', [Validators.required]],
@@ -67,6 +75,14 @@ export class CreateComponent implements OnInit {
   match(id: string) {
     this.service.match(id).subscribe((data) => {
       console.log(data);
+      this.openSnackBar(
+        'Match Done Successfully, click the view button to see the changes'
+      );
     });
+  }
+
+  logOut() {
+    this.service.logOff();
+    this.router.navigate(['/admin']);
   }
 }

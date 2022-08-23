@@ -1,1 +1,25 @@
+<div>
+    <mat-toolbar class="toolbar" color="primary">
+        <button mat-icon-button class="logo" aria-label="Logo">
+            <!-- <mat-icon>menu</mat-icon> -->
+            <img src=".././assets/icons/buddy.png" width="50px" height="50px">
+        </button>
+
+        <span class="title">Buddy Connect</span>
+        <!-- <span class="example-spacer"></span> -->
+
+        <div class="rts">
+            <button mat-icon-button class="student" aria-label="student" [routerLink]="['/student']">
+                <mat-icon>person</mat-icon>
+                Student
+            </button>
+
+            <button mat-icon-button class="Admin" aria-label="admin" [routerLink]="['/admin']">
+                <mat-icon>admin_panel_settings</mat-icon>
+                Admin
+            </button>
+        </div>
+    </mat-toolbar>
+</div>
+
 <router-outlet></router-outlet>
