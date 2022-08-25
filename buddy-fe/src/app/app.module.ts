@@ -17,6 +17,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { BannerDialogComponent } from './student/banner-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     StudentComponent,
     HomeComponent,
     CreateComponent,
+    BannerDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatIconModule,
     MatToolbarModule,
     MatDialogModule,
+    // BannerDialogComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -20,13 +20,13 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: '',
-    component: HomeComponent,
-  },
-  {
     path: 'create',
     component: CreateComponent,
     // canActivate: [AdminGuard],
+  },
+  {
+    path: '',
+    component: StudentComponent,
   },
 ];
 

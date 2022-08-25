@@ -1,8 +1,13 @@
-<h1 mat-dialog-title>Hi </h1>
+<h1 mat-dialog-title>Here's how we use your data </h1>
 <div mat-dialog-content>
+    <h2>Please note the below points:</h2>
+    <ul>
+        <li>Our objective is to find a match for you</li>
+        <li>Only your id and module code is stored in the database</li>
+        <li>The data gets deleted automatically once the match is found</li>
+    </ul>
 
 </div>
 <div mat-dialog-actions>
-
-    <button mat-button (click)="close()" cdkFocusInitial>I Accept</button>
+    <button class="acceptBtn" mat-button (click)="close()" cdkFocusInitial>I Accept</button>
 </div>

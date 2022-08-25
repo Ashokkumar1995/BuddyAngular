@@ -8,6 +8,7 @@ import {
 @Component({
   selector: 'banner',
   templateUrl: 'banner-dialog.component.html',
+  styleUrls: ['./banner-dialog.component.scss'],
 })
 export class BannerDialogComponent {
   constructor(
@@ -15,7 +16,7 @@ export class BannerDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
-  onNoClick(): void {
+  close(): void {
     this.dialogRef.close();
   }
 }
