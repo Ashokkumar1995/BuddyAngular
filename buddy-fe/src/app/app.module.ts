@@ -18,6 +18,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BannerDialogComponent } from './student/banner-dialog.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +45,9 @@ import { BannerDialogComponent } from './student/banner-dialog.component';
     MatIconModule,
     MatToolbarModule,
     MatDialogModule,
-    // BannerDialogComponent,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

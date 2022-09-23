@@ -20,12 +20,19 @@
 .studentForm {
   display: flex;
   div {
+    display: flex;
+    align-items: center;
     margin: 20px;
   }
 }
-.mat-card-actions .submitBtn {
-  background-color: #138a72;
-  color: white;
+.mat-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .submitBtn {
+    background-color: #138a72;
+    color: white;
+  }
 }
 
 .result {

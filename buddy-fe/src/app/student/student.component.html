@@ -17,7 +17,14 @@
                 <div>
                     <label>
                         Module Code:
-                        <input formControlName="moduleCode" placeholder="Enter the provided module code">
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Modules</mat-label>
+                            <mat-select formControlName="moduleCode">
+                                <mat-option *ngFor="let m of modules" [value]="m.id">{{m.id}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
                     </label>
                 </div>
 

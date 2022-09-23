@@ -41,19 +41,14 @@ export class CreateComponent implements OnInit {
 
   loadModules() {
     this.service.loadModules().subscribe((data: ModuleCreate[]) => {
-      console.log(data);
       this.dataSource = new MatTableDataSource(data);
     });
   }
 
   onSubmit(form: FormGroup) {
-    console.log('Valid?', form.valid); // true or false
-    console.log('Id', form.value.id);
-    console.log('Count', form.value.count);
     this.service
       .createModule(form.value.id, form.value.count)
       .subscribe((data: any) => {
-        console.log(data);
         if (data.body.resp) {
           this.openSnackBar('Created Successfully !');
           this.createForm.reset();
@@ -74,10 +69,16 @@ export class CreateComponent implements OnInit {
 
   match(id: string) {
     this.service.match(id).subscribe((data) => {
-      console.log(data);
       this.openSnackBar(
         'Match Done Successfully, click the view button to see the changes'
       );
+    });
+  }
+
+  deleteModule(id: string) {
+    this.service.deleteModule(id).subscribe((data) => {
+      this.openSnackBar('Successfully deleted');
+      this.loadModules();
     });
   }
 

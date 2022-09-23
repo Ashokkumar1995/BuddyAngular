@@ -10,6 +10,8 @@ import { StudentService } from './student.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { BannerDialogComponent } from './banner-dialog.component';
+import { AdminService } from '../admin/admin.service';
+import { ModuleCreate } from '../admin/admin.model';
 
 @Component({
   selector: 'app-student',
@@ -19,13 +21,13 @@ import { BannerDialogComponent } from './banner-dialog.component';
 export class StudentComponent implements OnInit {
   myForm!: FormGroup;
   result: string | undefined;
-  // success = false;
-  // responseMessage = '';
+  modules: ModuleCreate[] = [];
   constructor(
     private fb: FormBuilder,
     private service: StudentService,
     private _snackBar: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private adminService: AdminService
   ) {}
 
   ngOnInit(): void {
@@ -34,6 +36,7 @@ export class StudentComponent implements OnInit {
       moduleCode: ['', [Validators.required]],
     });
     this.openDialog();
+    this.getModules();
   }
 
   openDialog(): void {
@@ -46,6 +49,12 @@ export class StudentComponent implements OnInit {
     });
   }
 
+  getModules(): void {
+    this.adminService.loadModules().subscribe((data: ModuleCreate[]) => {
+      this.modules = data;
+    });
+  }
+
   onSubmit(form: FormGroup) {
     this.result = undefined;
     console.log('Valid?', form.valid); // true or false
@@ -54,17 +63,6 @@ export class StudentComponent implements OnInit {
     this.service
       .submit(form.value.email, form.value.moduleCode, '0')
       .subscribe((data) => {
-        // if (!data.body.resp && data.statusCode == 'OK') {
-        //   this.success = true;
-        //   this.responseMessage =
-        //     'Successfully submitted !! you will receive a mail once the partner is matched.';
-        // }
-        // else if (data.body.resp == 'No Group') {
-        //   this.success = true;
-        //   this.responseMessage =
-        //     'You have already submitted your details and not assigned a partner yet';
-        // }
-
         if (data.body) {
           if (data.body.resp == 'No Group') {
             this.openSnackBar(
@@ -83,7 +81,6 @@ export class StudentComponent implements OnInit {
               .concat(',')
               .toString();
             this.result = str;
-            // this.openSnackBar('Your team mates are ' + str);
           }
         } else {
           this.openSnackBar('The provided module code is incorrect.');

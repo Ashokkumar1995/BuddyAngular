@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Admin, ModuleCreate } from './admin.model';
 import { map } from 'rxjs/operators';
@@ -52,7 +52,6 @@ export class AdminService {
   }
 
   isAuthenticated(): boolean {
-    console.log(this.isLoggedIn);
     return this.isLoggedIn;
   }
 
@@ -70,5 +69,15 @@ export class AdminService {
 
   public match(id: string): Observable<any> {
     return this.http.get(this.url + '/match/' + id);
+  }
+
+  public deleteModule(id: string): Observable<any> {
+    let m: ModuleCreate = { id: id, count: 0 };
+    const httpOptions = {
+      headers: this.headers,
+      body: m,
+    };
+
+    return this.http.delete(this.url + '/delete', httpOptions);
   }
 }

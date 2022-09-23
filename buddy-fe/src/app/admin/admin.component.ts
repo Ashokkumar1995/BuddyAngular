@@ -20,6 +20,9 @@ export class AdminComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (sessionStorage.getItem('logIn') == 'true') {
+      this.router.navigate(['/create']);
+    }
     this.myForm = this.fb.group({
       id: ['', [Validators.required]],
       pwd: ['', [Validators.required]],
@@ -27,15 +30,7 @@ export class AdminComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
-    console.log('Valid?', form.valid); // true or false
-    console.log('Email', form.value.id);
-    console.log('pwd', form.value.pwd);
-
-    // this.service.login(form.value.id, form.value.pwd).subscribe((data) => {
-    //   console.log(data);
-    // });
     this.service.login(form.value.id, form.value.pwd).subscribe((data) => {
-      // console.log(data);
       if (data.resp == 'true') {
         this.router.navigate(['/create']);
       } else {
